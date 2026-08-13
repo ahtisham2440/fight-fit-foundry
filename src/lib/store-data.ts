@@ -1,0 +1,314 @@
+import gloves from "@/assets/cat-gloves.jpg";
+import wraps from "@/assets/cat-wraps.jpg";
+import headguard from "@/assets/cat-headguard.jpg";
+import shinguards from "@/assets/cat-shinguards.jpg";
+import bags from "@/assets/cat-bags.jpg";
+import pads from "@/assets/cat-pads.jpg";
+import footwear from "@/assets/cat-footwear.jpg";
+import clothing from "@/assets/cat-clothing.jpg";
+import accessories from "@/assets/cat-accessories.jpg";
+import gym from "@/assets/cat-gym.jpg";
+
+export type Category = {
+  name: string;
+  href: string;
+  image: string;
+  alt: string;
+};
+
+export const categories: Category[] = [
+  {
+    name: "Boxing Gloves",
+    href: "/collections/boxing-gloves",
+    image: gloves,
+    alt: "Black and yellow leather boxing gloves",
+  },
+  {
+    name: "Hand Wraps",
+    href: "/collections/hand-wraps",
+    image: wraps,
+    alt: "Rolled black cotton boxing hand wraps",
+  },
+  {
+    name: "Head Guards",
+    href: "/collections/head-guards",
+    image: headguard,
+    alt: "Black leather boxing head guard",
+  },
+  {
+    name: "Shin Guards",
+    href: "/collections/shin-guards",
+    image: shinguards,
+    alt: "Pair of black Muay Thai shin guards",
+  },
+  {
+    name: "Punch Bags",
+    href: "/collections/punch-bags",
+    image: bags,
+    alt: "Hanging black leather heavy punch bag",
+  },
+  {
+    name: "Pads & Mitts",
+    href: "/collections/pads-mitts",
+    image: pads,
+    alt: "Black and yellow Thai kick pads",
+  },
+  {
+    name: "Footwear",
+    href: "/collections/footwear",
+    image: footwear,
+    alt: "Black high-top boxing boots",
+  },
+  {
+    name: "Clothing",
+    href: "/collections/clothing",
+    image: clothing,
+    alt: "Black fight shorts for combat sports training",
+  },
+  {
+    name: "Accessories",
+    href: "/collections/accessories",
+    image: accessories,
+    alt: "Boxing mouthguard, skipping rope and gym bag",
+  },
+  {
+    name: "Gym Equipment",
+    href: "/collections/gym-equipment",
+    image: gym,
+    alt: "Black kettlebell and medicine ball gym equipment",
+  },
+];
+
+export type Product = {
+  id: string;
+  name: string;
+  brand: string;
+  price: number;
+  compareAt?: number;
+  rating: number;
+  reviews: number;
+  inStock: boolean;
+  image: string;
+  alt: string;
+  badge?: string;
+};
+
+export const bestsellers: Product[] = [
+  {
+    id: "fx-bgv1",
+    name: "BGV1 Universal Training Gloves",
+    brand: "Fairtex",
+    price: 109,
+    compareAt: 129,
+    rating: 4.9,
+    reviews: 412,
+    inStock: true,
+    image: gloves,
+    alt: "Fairtex BGV1 training boxing gloves",
+    badge: "Bestseller",
+  },
+  {
+    id: "tw-bgvl3",
+    name: "BGVL3 Velcro Boxing Gloves",
+    brand: "Twins Special",
+    price: 99,
+    rating: 4.8,
+    reviews: 356,
+    inStock: true,
+    image: pads,
+    alt: "Twins Special BGVL3 velcro boxing gloves",
+  },
+  {
+    id: "rv-rb2",
+    name: "RB2 Elite Hand Wraps 4.5m",
+    brand: "Rival",
+    price: 19,
+    compareAt: 24,
+    rating: 4.7,
+    reviews: 188,
+    inStock: true,
+    image: wraps,
+    alt: "Rival elite boxing hand wraps",
+  },
+  {
+    id: "st-orion",
+    name: "Orion Sparring Head Guard",
+    brand: "Sting",
+    price: 139,
+    rating: 4.6,
+    reviews: 94,
+    inStock: true,
+    image: headguard,
+    alt: "Sting Orion sparring head guard",
+  },
+  {
+    id: "pf-shin",
+    name: "Primo Emblem Shin Guards",
+    brand: "Primo Fightwear",
+    price: 129,
+    rating: 4.8,
+    reviews: 143,
+    inStock: false,
+    image: shinguards,
+    alt: "Primo Fightwear emblem Muay Thai shin guards",
+  },
+  {
+    id: "hb-t3",
+    name: "T3 Lace-Up Boxing Boots",
+    brand: "Hayabusa",
+    price: 179,
+    compareAt: 199,
+    rating: 4.7,
+    reviews: 76,
+    inStock: true,
+    image: footwear,
+    alt: "Hayabusa T3 lace-up boxing boots",
+  },
+];
+
+export const newArrivals: Product[] = [
+  {
+    id: "na-bag",
+    name: "Pro 120cm Heavy Bag (Filled)",
+    brand: "Ironclad",
+    price: 219,
+    rating: 4.8,
+    reviews: 31,
+    inStock: true,
+    image: bags,
+    alt: "Ironclad pro 120cm filled heavy punch bag",
+    badge: "New",
+  },
+  {
+    id: "na-shorts",
+    name: "Ranked Muay Thai Shorts",
+    brand: "Primo Fightwear",
+    price: 59,
+    rating: 4.9,
+    reviews: 22,
+    inStock: true,
+    image: clothing,
+    alt: "Primo Fightwear ranked Muay Thai shorts",
+    badge: "New",
+  },
+  {
+    id: "na-kettle",
+    name: "Competition Kettlebell 16kg",
+    brand: "Ironclad",
+    price: 74,
+    rating: 4.6,
+    reviews: 18,
+    inStock: true,
+    image: gym,
+    alt: "Competition 16kg kettlebell",
+    badge: "New",
+  },
+  {
+    id: "na-kit",
+    name: "Starter Kit — Gloves, Wraps, Mouthguard",
+    brand: "Ironclad",
+    price: 129,
+    rating: 4.8,
+    reviews: 64,
+    inStock: true,
+    image: accessories,
+    alt: "Beginner combat sports starter kit with mouthguard and rope",
+    badge: "New",
+  },
+];
+
+export const saleProducts: Product[] = [
+  {
+    id: "sl-gloves",
+    name: "Legacy Sparring Gloves 16oz",
+    brand: "Twins Special",
+    price: 79,
+    compareAt: 119,
+    rating: 4.7,
+    reviews: 209,
+    inStock: true,
+    image: gloves,
+    alt: "Twins Special legacy 16oz sparring gloves",
+    badge: "-34%",
+  },
+  {
+    id: "sl-pads",
+    name: "Curved Thai Kick Pads (Pair)",
+    brand: "Fairtex",
+    price: 149,
+    compareAt: 189,
+    rating: 4.9,
+    reviews: 88,
+    inStock: true,
+    image: pads,
+    alt: "Fairtex curved Thai kick pads",
+    badge: "-21%",
+  },
+  {
+    id: "sl-boots",
+    name: "Speed Mid Boxing Boots",
+    brand: "Nike",
+    price: 119,
+    compareAt: 159,
+    rating: 4.5,
+    reviews: 57,
+    inStock: true,
+    image: footwear,
+    alt: "Nike speed mid boxing boots",
+    badge: "-25%",
+  },
+  {
+    id: "sl-guard",
+    name: "Amateur Head Guard",
+    brand: "Hit N Move",
+    price: 89,
+    compareAt: 115,
+    rating: 4.4,
+    reviews: 41,
+    inStock: true,
+    image: headguard,
+    alt: "Hit N Move amateur competition head guard",
+    badge: "-23%",
+  },
+];
+
+export const brands = [
+  "Fairtex",
+  "Twins Special",
+  "Primo Fightwear",
+  "Rival",
+  "Sting",
+  "Hayabusa",
+  "Nike",
+  "Hit N Move",
+];
+
+export const navigation: { name: string; href: string; children?: string[] }[] = [
+  {
+    name: "Gloves",
+    href: "/collections/boxing-gloves",
+    children: ["Training Gloves", "Sparring Gloves", "Bag Gloves", "Competition Gloves", "MMA Gloves"],
+  },
+  {
+    name: "Protection",
+    href: "/collections/protection",
+    children: ["Head Guards", "Shin Guards", "Mouthguards", "Groin Guards", "Elbow & Ankle"],
+  },
+  { name: "Wraps", href: "/collections/hand-wraps" },
+  {
+    name: "Punch Bags",
+    href: "/collections/punch-bags",
+    children: ["Heavy Bags", "Free-Standing Bags", "Speed Balls", "Brackets & Chains"],
+  },
+  { name: "Pads & Mitts", href: "/collections/pads-mitts" },
+  { name: "Footwear", href: "/collections/footwear" },
+  {
+    name: "Clothing",
+    href: "/collections/clothing",
+    children: ["Fight Shorts", "Rash Guards", "T-Shirts", "Hoodies"],
+  },
+  { name: "Accessories", href: "/collections/accessories" },
+  { name: "Gym Equipment", href: "/collections/gym-equipment" },
+  { name: "Brands", href: "/collections/brands" },
+  { name: "Sale", href: "/collections/sale" },
+];
