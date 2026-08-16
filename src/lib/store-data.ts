@@ -8,6 +8,9 @@ import footwear from "@/assets/cat-footwear.jpg";
 import clothing from "@/assets/cat-clothing.jpg";
 import accessories from "@/assets/cat-accessories.jpg";
 import gym from "@/assets/cat-gym.jpg";
+import glovesRed from "@/assets/var-gloves-red.jpg";
+import glovesBlue from "@/assets/var-gloves-blue.jpg";
+import glovesWhite from "@/assets/var-gloves-white.jpg";
 
 export type Category = {
   name: string;
