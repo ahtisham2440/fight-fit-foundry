@@ -121,6 +121,12 @@ export const bestsellers: Product[] = [
     image: gloves,
     alt: "Fairtex BGV1 training boxing gloves",
     badge: "Bestseller",
+    variants: [
+      { name: "Black / Yellow", swatch: "#1b1b1b", image: gloves, alt: "Fairtex BGV1 training boxing gloves in black and yellow" },
+      { name: "Red", swatch: "#c1272d", image: glovesRed, alt: "Fairtex BGV1 training boxing gloves in red" },
+      { name: "Blue", swatch: "#1f4fd8", image: glovesBlue, alt: "Fairtex BGV1 training boxing gloves in blue" },
+      { name: "White", swatch: "#f2f2f0", image: glovesWhite, alt: "Fairtex BGV1 training boxing gloves in white" },
+    ],
   },
   {
     id: "tw-bgvl3",
