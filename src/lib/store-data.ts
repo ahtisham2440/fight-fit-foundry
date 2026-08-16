@@ -136,8 +136,13 @@ export const bestsellers: Product[] = [
     rating: 4.8,
     reviews: 356,
     inStock: true,
-    image: pads,
-    alt: "Twins Special BGVL3 velcro boxing gloves",
+    image: glovesRed,
+    alt: "Twins Special BGVL3 velcro boxing gloves in red",
+    variants: [
+      { name: "Red", swatch: "#c1272d", image: glovesRed, alt: "Twins Special BGVL3 velcro boxing gloves in red" },
+      { name: "Blue", swatch: "#1f4fd8", image: glovesBlue, alt: "Twins Special BGVL3 velcro boxing gloves in blue" },
+      { name: "Black", swatch: "#1b1b1b", image: gloves, alt: "Twins Special BGVL3 velcro boxing gloves in black" },
+    ],
   },
   {
     id: "rv-rb2",
