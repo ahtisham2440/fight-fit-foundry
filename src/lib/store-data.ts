@@ -253,9 +253,14 @@ export const saleProducts: Product[] = [
     rating: 4.7,
     reviews: 209,
     inStock: true,
-    image: gloves,
-    alt: "Twins Special legacy 16oz sparring gloves",
+    image: glovesWhite,
+    alt: "Twins Special legacy 16oz sparring gloves in white",
     badge: "-34%",
+    variants: [
+      { name: "White", swatch: "#f2f2f0", image: glovesWhite, alt: "Twins Special legacy 16oz sparring gloves in white" },
+      { name: "Black", swatch: "#1b1b1b", image: gloves, alt: "Twins Special legacy 16oz sparring gloves in black" },
+      { name: "Red", swatch: "#c1272d", image: glovesRed, alt: "Twins Special legacy 16oz sparring gloves in red" },
+    ],
   },
   {
     id: "sl-pads",
