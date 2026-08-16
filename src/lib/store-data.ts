@@ -8,6 +8,9 @@ import footwear from "@/assets/cat-footwear.jpg";
 import clothing from "@/assets/cat-clothing.jpg";
 import accessories from "@/assets/cat-accessories.jpg";
 import gym from "@/assets/cat-gym.jpg";
+import glovesRed from "@/assets/var-gloves-red.jpg";
+import glovesBlue from "@/assets/var-gloves-blue.jpg";
+import glovesWhite from "@/assets/var-gloves-white.jpg";
 
 export type Category = {
   name: string;
@@ -79,6 +82,16 @@ export const categories: Category[] = [
   },
 ];
 
+/** A selectable colour variant. `swatch` is ONLY used for the swatch dot and a
+ *  very faint ambient glow behind the image — never as a UI accent. */
+export type ProductVariant = {
+  name: string;
+  /** Raw product colour, used for the swatch dot + subtle studio ambience. */
+  swatch: string;
+  image: string;
+  alt: string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -91,7 +104,9 @@ export type Product = {
   image: string;
   alt: string;
   badge?: string;
+  variants?: ProductVariant[];
 };
+
 
 export const bestsellers: Product[] = [
   {
@@ -106,6 +121,12 @@ export const bestsellers: Product[] = [
     image: gloves,
     alt: "Fairtex BGV1 training boxing gloves",
     badge: "Bestseller",
+    variants: [
+      { name: "Black / Yellow", swatch: "#1b1b1b", image: gloves, alt: "Fairtex BGV1 training boxing gloves in black and yellow" },
+      { name: "Red", swatch: "#c1272d", image: glovesRed, alt: "Fairtex BGV1 training boxing gloves in red" },
+      { name: "Blue", swatch: "#1f4fd8", image: glovesBlue, alt: "Fairtex BGV1 training boxing gloves in blue" },
+      { name: "White", swatch: "#f2f2f0", image: glovesWhite, alt: "Fairtex BGV1 training boxing gloves in white" },
+    ],
   },
   {
     id: "tw-bgvl3",
@@ -115,8 +136,13 @@ export const bestsellers: Product[] = [
     rating: 4.8,
     reviews: 356,
     inStock: true,
-    image: pads,
-    alt: "Twins Special BGVL3 velcro boxing gloves",
+    image: glovesRed,
+    alt: "Twins Special BGVL3 velcro boxing gloves in red",
+    variants: [
+      { name: "Red", swatch: "#c1272d", image: glovesRed, alt: "Twins Special BGVL3 velcro boxing gloves in red" },
+      { name: "Blue", swatch: "#1f4fd8", image: glovesBlue, alt: "Twins Special BGVL3 velcro boxing gloves in blue" },
+      { name: "Black", swatch: "#1b1b1b", image: gloves, alt: "Twins Special BGVL3 velcro boxing gloves in black" },
+    ],
   },
   {
     id: "rv-rb2",
@@ -227,9 +253,14 @@ export const saleProducts: Product[] = [
     rating: 4.7,
     reviews: 209,
     inStock: true,
-    image: gloves,
-    alt: "Twins Special legacy 16oz sparring gloves",
+    image: glovesWhite,
+    alt: "Twins Special legacy 16oz sparring gloves in white",
     badge: "-34%",
+    variants: [
+      { name: "White", swatch: "#f2f2f0", image: glovesWhite, alt: "Twins Special legacy 16oz sparring gloves in white" },
+      { name: "Black", swatch: "#1b1b1b", image: gloves, alt: "Twins Special legacy 16oz sparring gloves in black" },
+      { name: "Red", swatch: "#c1272d", image: glovesRed, alt: "Twins Special legacy 16oz sparring gloves in red" },
+    ],
   },
   {
     id: "sl-pads",
