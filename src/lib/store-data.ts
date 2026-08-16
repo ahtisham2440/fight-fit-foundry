@@ -79,6 +79,16 @@ export const categories: Category[] = [
   },
 ];
 
+/** A selectable colour variant. `swatch` is ONLY used for the swatch dot and a
+ *  very faint ambient glow behind the image — never as a UI accent. */
+export type ProductVariant = {
+  name: string;
+  /** Raw product colour, used for the swatch dot + subtle studio ambience. */
+  swatch: string;
+  image: string;
+  alt: string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -91,7 +101,9 @@ export type Product = {
   image: string;
   alt: string;
   badge?: string;
+  variants?: ProductVariant[];
 };
+
 
 export const bestsellers: Product[] = [
   {
