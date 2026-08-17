@@ -1,0 +1,703 @@
+{%- comment -%}
+==============================================================================
+  IRONCLAD FIGHT CO. — HOMEPAGE (single Custom Liquid paste)
+------------------------------------------------------------------------------
+  Kaise lagayein:
+  1. Shopify Admin > Online Store > Themes > Customize
+  2. Home page par "Add section" > "Custom Liquid"
+  3. Is poori file ka content copy karke us box mein paste karein > Save
+  4. Neeche "EDIT YAHAN" wale hisse mein text / images / collection handles
+     apne hisaab se badal lein.
+  Note: apne theme ka default header/footer chalta rahega. Agar aap chahte hain
+  ke sirf yeh design dikhe, to theme editor mein baaki sections remove kar dein.
+==============================================================================
+{%- endcomment -%}
+
+{%- comment -%} ============ EDIT YAHAN — COLLECTION HANDLES ============ {%- endcomment -%}
+{%- assign bestsellers_handle = 'bestsellers' -%}
+{%- assign new_handle        = 'new-arrivals' -%}
+{%- assign sale_handle       = 'sale' -%}
+{%- assign products_per_rail = 6 -%}
+
+{%- comment -%} ============ EDIT YAHAN — TEXT ============ {%- endcomment -%}
+{%- assign ann_text     = 'Free shipping over €99 · EU stock · No customs' -%}
+{%- assign ann_link_txt = 'Get 10% off your first order' -%}
+{%- assign ann_link_url = '/pages/newsletter' -%}
+
+{%- assign hero_eyebrow = 'Boxing · Muay Thai · MMA' -%}
+{%- assign hero_title   = 'Boxing &amp; combat sports equipment' -%}
+{%- assign hero_text    = 'Premium gear from Fairtex, Twins Special, Rival and more. Shipped from our EU warehouse — fast delivery, no customs charges, easy 30-day returns.' -%}
+{%- assign hero_cta1    = 'Shop bestsellers' -%}
+{%- assign hero_cta1_url = '#ic-bestsellers' -%}
+{%- assign hero_cta2    = 'Shop all' -%}
+{%- assign hero_cta2_url = '/collections/all' -%}
+{%- assign hero_note    = 'Order before 14:00 — dispatched today' -%}
+
+{%- comment -%}
+  IMAGES: Shopify Admin > Content > Files mein upload karke URL copy karein
+  aur neeche paste karein. Khali chhorenge to gradient placeholder aa jayega.
+{%- endcomment -%}
+{%- assign hero_image     = '' -%}
+{%- assign campaign_image = '' -%}
+
+{%- comment -%} Category tiles: "Naam|/collections/handle|image-url" — pipe se alag {%- endcomment -%}
+{%- assign category_rows = 'Boxing Gloves|/collections/boxing-gloves|,Hand Wraps|/collections/hand-wraps|,Head Guards|/collections/head-guards|,Punch Bags|/collections/punch-bags|,Pads &amp; Mitts|/collections/pads-mitts|' | split: ',' -%}
+
+{%- assign trust_items = 'EU Stock,Fast Delivery,No Customs,Secure Payments,Easy Returns' | split: ',' -%}
+{%- assign brand_list  = 'Fairtex,Twins Special,Primo Fightwear,Rival,Sting,Hayabusa,Nike,Hit N Move' | split: ',' -%}
+
+{%- assign campaign_eyebrow = 'Ironclad Pro Series' -%}
+{%- assign campaign_title   = 'Built for fighters' -%}
+{%- assign campaign_text    = 'Professional combat equipment designed for serious training — full-grain leather, multi-layer foam and stitching tested round after round.' -%}
+{%- assign campaign_cta     = 'Shop collection' -%}
+{%- assign campaign_cta_url = '/collections/pro-series' -%}
+
+{%- comment -%} Reviews: "Quote|Naam|Meta" {%- endcomment -%}
+{%- assign review_rows = 'Excellent quality and very fast delivery — gloves arrived in two days, no customs.|Mateo R.|Verified buyer · Fairtex BGV1,Great gloves and arrived exactly when promised. The size guide got the fit spot on.|Hanna K.|Verified buyer · Twins BGVL3,Ordered shin guards for the gym. Solid padding and honest pricing for the brand.|Luca B.|Verified buyer · Primo shin guards,Returned a pair for a bigger size and it was handled in three days. Painless.|Sofia D.|Verified buyer · Rival wraps' | split: ',' -%}
+
+{%- comment -%} Guides: "Title|Text|/url" {%- endcomment -%}
+{%- assign guide_rows = 'Boxing glove size guide|Match glove weight to your body weight, hand size and training type.|/pages/glove-size-guide,12oz vs 14oz vs 16oz|Which weight is right for bag work, pad work and sparring.|/pages/glove-weight-guide,Shin guard size guide|Measure shin length and calf width for a guard that won&#39;t rotate.|/pages/shin-guard-size-guide,Beginner&#39;s starter kit|Everything you need for your first eight weeks of training.|/collections/starter-kit' | split: ',' -%}
+
+{%- comment -%} Why buy: "Title|Text" {%- endcomment -%}
+{%- assign why_rows = 'EU stock|Everything ships from our warehouse inside the EU.,No customs|No import duties, no surprise fees at the door.,Fast dispatch|Ordered before 14:00 on a weekday? It leaves today.,Easy returns|30 days to return unused gear, no interrogation.,Secure payments|Card, Apple Pay, Google Pay and bank transfer.,Expert support|Answered by people who train, not a script.,Size guidance|Send us your measurements and we&#39;ll pick the fit.' | split: ',' -%}
+
+{%- assign blog_handle = blog.handle | default: 'news' -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .ic{
+    --ic-bg:#131313; --ic-surface:#1d1d1d; --ic-surface2:#272727;
+    --ic-fg:#f7f7f7; --ic-muted:#a5a5a5;
+    --ic-accent:#ffcc00; --ic-accent-fg:#131313;
+    --ic-border:rgba(255,255,255,.12); --ic-radius:4px;
+    background:var(--ic-bg); color:var(--ic-fg);
+    font-family:"Barlow",ui-sans-serif,system-ui,sans-serif;
+    font-size:16px; line-height:1.55;
+  }
+  .ic *,.ic *::before,.ic *::after{box-sizing:border-box}
+  .ic img{display:block;max-width:100%;height:auto}
+  .ic a{color:inherit;text-decoration:none}
+  .ic h1,.ic h2,.ic h3{
+    font-family:"Anton","Arial Narrow",sans-serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:.01em;line-height:1.02;margin:0;
+  }
+  .ic p{margin:0}
+  .ic ul{list-style:none;margin:0;padding:0}
+  .ic-wrap{max-width:1400px;margin:0 auto;padding:0 16px}
+  .ic-sec{padding:56px 0}
+  .ic-sec--surface{background:var(--ic-surface)}
+  .ic-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--ic-accent)}
+  .ic-muted{color:var(--ic-muted)}
+  .ic-h2{font-size:30px}
+  .ic-head{margin-bottom:32px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .ic-head p.ic-sub{margin-top:8px;max-width:620px;font-size:14px;color:var(--ic-muted)}
+  .ic-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    border-radius:var(--ic-radius);font-weight:700;text-transform:uppercase;
+    letter-spacing:.12em;font-size:12px;height:44px;padding:0 20px;
+    border:1px solid transparent;cursor:pointer;transition:.15s;
+  }
+  .ic-btn--lg{height:52px;padding:0 28px;font-size:14px}
+  .ic-btn--primary{background:var(--ic-accent);color:var(--ic-accent-fg)}
+  .ic-btn--primary:hover{opacity:.85}
+  .ic-btn--secondary{border-color:var(--ic-border);color:var(--ic-fg);background:transparent}
+  .ic-btn--secondary:hover{background:var(--ic-surface2)}
+  .ic-btn--text{background:none;padding:0;height:auto;color:var(--ic-accent)}
+  .ic-btn[disabled]{opacity:.5;cursor:not-allowed}
+  .ic-card{border:1px solid var(--ic-border);border-radius:var(--ic-radius);background:var(--ic-surface);overflow:hidden}
+  .ic-card--hover:hover{border-color:rgba(255,204,0,.6)}
+  .ic-scroll{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+  .ic-scroll::-webkit-scrollbar{display:none}
+  .ic-scroll{scrollbar-width:none}
+  .ic-scroll > *{flex:0 0 62vw;scroll-snap-align:start}
+
+  /* announcement */
+  .ic-ann{background:var(--ic-accent);color:var(--ic-accent-fg)}
+  .ic-ann .ic-wrap{display:flex;align-items:center;justify-content:center;gap:24px;height:36px;
+    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;overflow:hidden;white-space:nowrap}
+  .ic-ann a{text-decoration:underline;display:none}
+
+  /* hero */
+  .ic-hero{position:relative;isolation:isolate;overflow:hidden;background:var(--ic-bg)}
+  .ic-hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% center;opacity:.7}
+  .ic-hero__shade{position:absolute;inset:0;background:linear-gradient(to top,var(--ic-bg),rgba(19,19,19,.85) 55%,rgba(19,19,19,.4))}
+  .ic-hero__inner{position:relative;min-height:520px;display:flex;align-items:flex-end;padding:48px 0}
+  .ic-hero__box{max-width:600px}
+  .ic-hero h1{font-size:38px;margin-top:12px}
+  .ic-hero__text{margin-top:16px;font-size:16px;color:var(--ic-muted)}
+  .ic-hero__cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+  .ic-hero__note{margin-top:20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ic-muted)}
+
+  /* trust */
+  .ic-trust{border-top:1px solid var(--ic-border);border-bottom:1px solid var(--ic-border);background:var(--ic-surface)}
+  .ic-trust .ic-scroll{padding:16px 0}
+  .ic-trust .ic-scroll > *{flex:0 0 auto}
+  .ic-trust span{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;white-space:nowrap}
+  .ic-dot{width:7px;height:7px;border-radius:50%;background:var(--ic-accent);flex:none}
+
+  /* categories */
+  .ic-cat__img{aspect-ratio:1/1;overflow:hidden;background:var(--ic-surface2)}
+  .ic-cat__img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .ic-cat:hover .ic-cat__img img{transform:scale(1.05)}
+  .ic-cat__bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px}
+  .ic-cat__bar span{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:14px;letter-spacing:.04em}
+  .ic-cat__bar em{color:var(--ic-accent);font-style:normal}
+
+  /* product card */
+  .ic-pcard{display:flex;flex-direction:column;height:100%}
+  .ic-stage{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:#0f0f0f}
+  .ic-stage img{position:relative;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .ic-pcard:hover .ic-stage img{transform:scale(1.05)}
+  .ic-stage__glow{position:absolute;inset:0;opacity:.09;pointer-events:none;transition:opacity .3s}
+  .ic-pcard:hover .ic-stage__glow{opacity:.14}
+  .ic-stage__floor{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(90% 70% at 50% 110%,rgba(0,0,0,.55) 0%,transparent 60%)}
+  .ic-badge{position:absolute;left:8px;top:8px;z-index:2;background:var(--ic-accent);color:var(--ic-accent-fg);
+    padding:4px 8px;border-radius:2px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em}
+  .ic-pbody{display:flex;flex-direction:column;gap:8px;padding:12px;flex:1}
+  .ic-brand{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--ic-muted)}
+  .ic-pname{font-family:"Barlow",sans-serif;font-size:14px;font-weight:600;text-transform:none;letter-spacing:normal;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .ic-stars{color:var(--ic-accent);font-size:13px;letter-spacing:1px}
+  .ic-swatches{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .ic-sw{width:20px;height:20px;border-radius:50%;border:1px solid var(--ic-border);padding:2px;background:none;cursor:pointer}
+  .ic-sw span{display:block;width:100%;height:100%;border-radius:50%}
+  .ic-sw[aria-checked="true"]{box-shadow:0 0 0 2px var(--ic-accent)}
+  .ic-price{margin-top:auto;display:flex;align-items:baseline;gap:8px;padding-top:4px}
+  .ic-price b{font-family:"Anton",sans-serif;font-weight:400;font-size:20px}
+  .ic-price s{font-size:14px;color:var(--ic-muted)}
+  .ic-stock{font-size:12px;font-weight:600;color:var(--ic-accent)}
+  .ic-stock--out{color:var(--ic-muted)}
+  .ic-pcard form{margin:0}
+  .ic-pcard .ic-btn{width:100%;margin-top:4px}
+
+  /* campaign */
+  .ic-camp{position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--ic-border);border-radius:var(--ic-radius)}
+  .ic-camp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ic-camp__shade{position:absolute;inset:0;background:linear-gradient(to right,var(--ic-bg),rgba(19,19,19,.8) 55%,rgba(19,19,19,.2))}
+  .ic-camp__box{position:relative;max-width:560px;padding:56px 32px}
+
+  /* brands */
+  .ic-brands{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .ic-brands a{display:grid;place-items:center;height:80px;border:1px solid var(--ic-border);border-radius:var(--ic-radius);
+    background:var(--ic-surface);font-family:"Anton",sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:15px;color:var(--ic-fg)}
+  .ic-brands a:hover{border-color:rgba(255,204,0,.6);color:var(--ic-accent)}
+
+  /* tabs */
+  .ic-tabs{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--ic-border);border-radius:var(--ic-radius);background:var(--ic-surface)}
+  .ic-tab{background:none;border:0;color:var(--ic-fg);font:inherit;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    font-size:12px;padding:8px 16px;border-radius:2px;cursor:pointer}
+  .ic-tab[aria-selected="true"]{background:var(--ic-accent);color:var(--ic-accent-fg)}
+  .ic-panel[hidden]{display:none}
+
+  /* reviews / guides / why */
+  .ic-grid2{display:grid;gap:16px}
+  .ic-score{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:32px;text-align:center}
+  .ic-score b{font-family:"Anton",sans-serif;font-weight:400;font-size:56px;color:var(--ic-accent);line-height:1}
+  .ic-quote{padding:20px}
+  .ic-quote p{font-size:14px}
+  .ic-quote footer{margin-top:16px;font-size:12px;color:var(--ic-muted)}
+  .ic-pull{margin:24px 0 0;padding:28px}
+  .ic-pull p{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:20px;line-height:1.15}
+  .ic-pull footer{margin-top:12px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ic-muted)}
+  .ic-tile{display:flex;flex-direction:column;gap:12px;padding:24px;height:100%}
+  .ic-tile h3{font-size:18px}
+  .ic-tile p{font-size:14px;color:var(--ic-muted)}
+  .ic-tile .ic-more{margin-top:auto;padding-top:12px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ic-accent)}
+  .ic-why{display:flex;gap:12px;padding:20px;background:var(--ic-bg)}
+  .ic-why h3{font-size:16px}
+  .ic-why p{font-size:14px;color:var(--ic-muted);margin-top:4px}
+
+  /* blog */
+  .ic-post__img{aspect-ratio:16/9;overflow:hidden;background:var(--ic-surface2)}
+  .ic-post__img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .ic-post:hover .ic-post__img img{transform:scale(1.05)}
+  .ic-post__body{padding:20px}
+  .ic-post__body h3{font-size:18px;margin-top:6px}
+  .ic-post__body p{margin-top:8px;font-size:14px;color:var(--ic-muted)}
+  .ic-date{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ic-muted)}
+
+  /* newsletter */
+  .ic-news{max-width:720px;margin:0 auto;text-align:center}
+  .ic-news form{margin:28px auto 0;max-width:520px;display:grid;gap:12px}
+  .ic-news input[type="email"]{height:52px;width:100%;border-radius:var(--ic-radius);border:1px solid var(--ic-border);
+    background:var(--ic-bg);color:var(--ic-fg);padding:0 16px;font:inherit;font-size:14px}
+  .ic-news input::placeholder{color:var(--ic-muted)}
+  .ic-news input:focus{outline:none;border-color:var(--ic-accent)}
+  .ic-note{margin-top:12px;font-size:12px;color:var(--ic-muted)}
+  .ic-ok{margin-top:12px;font-size:13px;color:var(--ic-accent)}
+
+  .ic-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .ic-ph{width:100%;height:100%;background:
+      radial-gradient(120% 90% at 30% 20%,#2c2c2c 0%,#141414 70%);}
+
+  @media (min-width:640px){
+    .ic-h2{font-size:34px}
+    .ic-ann a{display:inline-flex}
+    .ic-hero h1{font-size:48px}
+    .ic-grid-cat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .ic-grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .ic-brands{grid-template-columns:repeat(4,1fr)}
+    .ic-news form{grid-template-columns:minmax(0,1fr) auto}
+  }
+  @media (min-width:768px){
+    .ic-sec{padding:72px 0}
+    .ic-wrap{padding:0 24px}
+    .ic-hero__inner{min-height:600px;align-items:center;padding:80px 0}
+    .ic-hero__shade{background:linear-gradient(to right,var(--ic-bg),rgba(19,19,19,.85) 50%,transparent)}
+    .ic-hero__img{opacity:1}
+    .ic-camp__box{padding:96px 56px}
+    .ic-trust .ic-scroll{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible}
+    .ic-trust span{justify-content:center}
+    .ic-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;overflow:visible}
+    .ic-rail > *{flex:none}
+    .ic-posts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .ic-pull p{font-size:24px}
+  }
+  @media (min-width:1024px){
+    .ic-h2{font-size:38px}
+    .ic-hero h1{font-size:60px}
+    .ic-grid-cat{grid-template-columns:repeat(5,1fr);overflow:visible}
+    .ic-grid-cat > *{flex:none}
+    .ic-grid-4{grid-template-columns:repeat(4,1fr)}
+    .ic-brands{grid-template-columns:repeat(8,1fr)}
+    .ic-rail{grid-template-columns:repeat(4,1fr)}
+    .ic-reviews{display:grid;grid-template-columns:280px minmax(0,1fr);gap:24px}
+    .ic-reviews ul{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  }
+  @media (min-width:1280px){
+    .ic-rail--6{grid-template-columns:repeat(6,1fr)}
+  }
+</style>
+
+<div class="ic">
+
+  {%- comment -%} 01 — ANNOUNCEMENT BAR {%- endcomment -%}
+  <div class="ic-ann">
+    <div class="ic-wrap">
+      <span>{{ ann_text }}</span>
+      <a href="{{ ann_link_url }}">{{ ann_link_txt }}</a>
+    </div>
+  </div>
+
+  {%- comment -%} 02 — HERO {%- endcomment -%}
+  <section class="ic-hero">
+    {%- if hero_image != blank -%}
+      <img class="ic-hero__img" src="{{ hero_image }}" alt="Fighter training in a dark gym" width="1920" height="1280" fetchpriority="high">
+    {%- else -%}
+      <div class="ic-hero__img ic-ph" aria-hidden="true"></div>
+    {%- endif -%}
+    <div class="ic-hero__shade" aria-hidden="true"></div>
+    <div class="ic-wrap ic-hero__inner">
+      <div class="ic-hero__box">
+        <p class="ic-eyebrow">{{ hero_eyebrow }}</p>
+        <h1>{{ hero_title }}</h1>
+        <p class="ic-hero__text">{{ hero_text }}</p>
+        <div class="ic-hero__cta">
+          <a class="ic-btn ic-btn--lg ic-btn--primary" href="{{ hero_cta1_url }}">{{ hero_cta1 }}</a>
+          <a class="ic-btn ic-btn--lg ic-btn--secondary" href="{{ hero_cta2_url }}">{{ hero_cta2 }}</a>
+        </div>
+        <p class="ic-hero__note">{{ hero_note }}</p>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} 03 — TRUST BAR {%- endcomment -%}
+  <section class="ic-trust" aria-label="Store guarantees">
+    <div class="ic-wrap">
+      <div class="ic-scroll">
+        {%- for item in trust_items -%}
+          <span><i class="ic-dot" aria-hidden="true"></i>{{ item }}</span>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} 04 — CATEGORY GRID {%- endcomment -%}
+  <section class="ic-sec" aria-labelledby="ic-cats">
+    <div class="ic-wrap">
+      <div class="ic-head">
+        <div>
+          <p class="ic-eyebrow">Shop by category</p>
+          <h2 class="ic-h2" id="ic-cats">Find your gear</h2>
+          <p class="ic-sub">Every discipline, every level — from first pair of wraps to competition kit.</p>
+        </div>
+      </div>
+      <div class="ic-scroll ic-grid-cat">
+        {%- for row in category_rows -%}
+          {%- assign parts = row | split: '|' -%}
+          {%- assign c_name = parts[0] -%}
+          {%- assign c_url  = parts[1] | default: '/collections/all' -%}
+          {%- assign c_img  = parts[2] -%}
+          {%- assign c_col  = collections[c_url | split: '/collections/' | last] -%}
+          <a class="ic-card ic-card--hover ic-cat" href="{{ c_url }}">
+            <div class="ic-cat__img">
+              {%- if c_img != blank -%}
+                <img src="{{ c_img }}" alt="{{ c_name | strip_html }}" loading="lazy" width="800" height="800">
+              {%- elsif c_col != blank and c_col.featured_image -%}
+                <img src="{{ c_col.featured_image | image_url: width: 800 }}" alt="{{ c_name | strip_html }}" loading="lazy" width="800" height="800">
+              {%- else -%}
+                <div class="ic-ph" aria-hidden="true"></div>
+              {%- endif -%}
+            </div>
+            <div class="ic-cat__bar"><span>{{ c_name }}</span><em>&rarr;</em></div>
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ---------- PRODUCT CARD MACRO (capture) ---------- {%- endcomment -%}
+  {%- capture render_rail -%}{%- endcapture -%}
+
+  {%- comment -%} 05 — BESTSELLERS {%- endcomment -%}
+  {%- assign rail = collections[bestsellers_handle] -%}
+  {%- if rail == blank or rail.products_count == 0 -%}{%- assign rail = collections.all -%}{%- endif -%}
+  <section class="ic-sec ic-sec--surface" id="ic-bestsellers" aria-labelledby="ic-best-h">
+    <div class="ic-wrap">
+      <div class="ic-head">
+        <div>
+          <p class="ic-eyebrow">Bestsellers</p>
+          <h2 class="ic-h2" id="ic-best-h">What fighters are buying</h2>
+          <p class="ic-sub">Ratings from verified orders — shipped from EU stock.</p>
+        </div>
+        <a class="ic-btn ic-btn--text" href="/collections/{{ bestsellers_handle }}">View all</a>
+      </div>
+      <div class="ic-scroll ic-rail ic-rail--6">
+        {%- for product in rail.products limit: products_per_rail -%}
+          {%- assign p = product -%}
+          {%- include_placeholder -%}
+          {%- comment -%} product card {%- endcomment -%}
+          <article class="ic-card ic-card--hover ic-pcard">
+            <a class="ic-stage" href="{{ p.url }}">
+              <span class="ic-stage__glow" aria-hidden="true" style="background:radial-gradient(120% 80% at 50% 42%, rgba(255,255,255,.7) 0%, transparent 68%)"></span>
+              <span class="ic-stage__floor" aria-hidden="true"></span>
+              {%- if p.featured_image -%}
+                <img data-ic-img src="{{ p.featured_image | image_url: width: 800 }}" alt="{{ p.featured_image.alt | default: p.title | escape }}" loading="lazy" width="800" height="800">
+              {%- else -%}
+                <div class="ic-ph" aria-hidden="true"></div>
+              {%- endif -%}
+              {%- if p.compare_at_price > p.price -%}<span class="ic-badge">Sale</span>{%- endif -%}
+            </a>
+            <div class="ic-pbody">
+              <p class="ic-brand">{{ p.vendor }}</p>
+              <h3 class="ic-pname"><a href="{{ p.url }}">{{ p.title }}</a></h3>
+              {%- assign color_opt = null -%}
+              {%- for opt in p.options_with_values -%}
+                {%- assign lname = opt.name | downcase -%}
+                {%- if lname contains 'color' or lname contains 'colour' -%}{%- assign color_opt = opt -%}{%- endif -%}
+              {%- endfor -%}
+              {%- if color_opt and color_opt.values.size > 1 -%}
+                <div class="ic-swatches" role="radiogroup" aria-label="Colour">
+                  {%- for val in color_opt.values -%}
+                    {%- assign vimg = '' -%}
+                    {%- for v in p.variants -%}
+                      {%- if v.options contains val and v.image -%}{%- assign vimg = v.image | image_url: width: 800 -%}{%- break -%}{%- endif -%}
+                    {%- endfor -%}
+                    <button type="button" class="ic-sw" role="radio" aria-checked="{% if forloop.first %}true{% else %}false{% endif %}"
+                      aria-label="{{ val | escape }}" title="{{ val | escape }}" data-ic-swatch data-img="{{ vimg }}">
+                      <span style="background:{{ val | handle | replace: '-', '' }}"></span>
+                    </button>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+              <div class="ic-price">
+                <b>{{ p.price | money }}</b>
+                {%- if p.compare_at_price > p.price -%}<s>{{ p.compare_at_price | money }}</s>{%- endif -%}
+              </div>
+              <p class="ic-stock{% unless p.available %} ic-stock--out{% endunless %}">
+                {% if p.available %}In EU stock · ships today{% else %}Back in stock soon{% endif %}
+              </p>
+              {%- if p.available -%}
+                <form action="/cart/add" method="post">
+                  <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
+                  <button type="submit" class="ic-btn ic-btn--primary">Add to cart</button>
+                </form>
+              {%- else -%}
+                <a class="ic-btn ic-btn--secondary" href="{{ p.url }}">Notify me</a>
+              {%- endif -%}
+            </div>
+          </article>
+        {%- else -%}
+          <p class="ic-muted">Is collection mein abhi products nahi hain — Shopify admin mein "{{ bestsellers_handle }}" collection banayein.</p>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} 06 — CAMPAIGN BANNER {%- endcomment -%}
+  <section class="ic-sec" aria-labelledby="ic-camp-h">
+    <div class="ic-wrap">
+      <div class="ic-camp">
+        {%- if campaign_image != blank -%}
+          <img src="{{ campaign_image }}" alt="Fighter kicking a heavy bag in a dark gym" loading="lazy" width="1920" height="1080">
+        {%- else -%}
+          <div class="ic-ph" style="position:absolute;inset:0" aria-hidden="true"></div>
+        {%- endif -%}
+        <div class="ic-camp__shade" aria-hidden="true"></div>
+        <div class="ic-camp__box">
+          <p class="ic-eyebrow">{{ campaign_eyebrow }}</p>
+          <h2 class="ic-h2" id="ic-camp-h">{{ campaign_title }}</h2>
+          <p class="ic-sub">{{ campaign_text }}</p>
+          <a class="ic-btn ic-btn--lg ic-btn--primary" style="margin-top:28px" href="{{ campaign_cta_url }}">{{ campaign_cta }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} 07 — BRANDS {%- endcomment -%}
+  <section class="ic-sec ic-sec--surface" aria-labelledby="ic-brands-h">
+    <div class="ic-wrap">
+      <div class="ic-head">
+        <div>
+          <p class="ic-eyebrow">Brands we stock</p>
+          <h2 class="ic-h2" id="ic-brands-h">Only the real thing</h2>
+          <p class="ic-sub">Official stockist — every item sourced direct, never grey import.</p>
+        </div>
+      </div>
+      <div class="ic-brands">
+        {%- for b in brand_list -%}
+          <a href="/collections/vendors?q={{ b | url_encode }}">{{ b }}</a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} 08 — NEW & SALE (tabs) {%- endcomment -%}
+  <section class="ic-sec" aria-labelledby="ic-new-h">
+    <div class="ic-wrap">
+      <div class="ic-head">
+        <div>
+          <p class="ic-eyebrow">Fresh stock</p>
+          <h2 class="ic-h2" id="ic-new-h">New arrivals &amp; sale</h2>
+        </div>
+        <div class="ic-tabs" role="tablist" data-ic-tabs>
+          <button class="ic-tab" role="tab" aria-selected="true" data-panel="ic-panel-new">New in</button>
+          <button class="ic-tab" role="tab" aria-selected="false" data-panel="ic-panel-sale">On sale</button>
+        </div>
+      </div>
+
+      {%- assign tab_handles = new_handle | append: ',' | append: sale_handle | split: ',' -%}
+      {%- for th in tab_handles -%}
+        {%- assign tcol = collections[th] -%}
+        <div class="ic-panel" id="{% if forloop.first %}ic-panel-new{% else %}ic-panel-sale{% endif %}" role="tabpanel" {% unless forloop.first %}hidden{% endunless %}>
+          <div class="ic-scroll ic-rail">
+            {%- for p in tcol.products limit: 4 -%}
+              <article class="ic-card ic-card--hover ic-pcard">
+                <a class="ic-stage" href="{{ p.url }}">
+                  <span class="ic-stage__glow" aria-hidden="true" style="background:radial-gradient(120% 80% at 50% 42%, rgba(255,255,255,.7) 0%, transparent 68%)"></span>
+                  <span class="ic-stage__floor" aria-hidden="true"></span>
+                  {%- if p.featured_image -%}
+                    <img data-ic-img src="{{ p.featured_image | image_url: width: 800 }}" alt="{{ p.featured_image.alt | default: p.title | escape }}" loading="lazy" width="800" height="800">
+                  {%- else -%}
+                    <div class="ic-ph" aria-hidden="true"></div>
+                  {%- endif -%}
+                  <span class="ic-badge">{% if forloop.parentloop.first %}New{% else %}Sale{% endif %}</span>
+                </a>
+                <div class="ic-pbody">
+                  <p class="ic-brand">{{ p.vendor }}</p>
+                  <h3 class="ic-pname"><a href="{{ p.url }}">{{ p.title }}</a></h3>
+                  <div class="ic-price">
+                    <b>{{ p.price | money }}</b>
+                    {%- if p.compare_at_price > p.price -%}<s>{{ p.compare_at_price | money }}</s>{%- endif -%}
+                  </div>
+                  <p class="ic-stock{% unless p.available %} ic-stock--out{% endunless %}">
+                    {% if p.available %}In EU stock · ships today{% else %}Back in stock soon{% endif %}
+                  </p>
+                  {%- if p.available -%}
+                    <form action="/cart/add" method="post">
+                      <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
+                      <button type="submit" class="ic-btn ic-btn--primary">Add to cart</button>
+                    </form>
+                  {%- else -%}
+                    <a class="ic-btn ic-btn--secondary" href="{{ p.url }}">Notify me</a>
+                  {%- endif -%}
+                </div>
+              </article>
+            {%- else -%}
+              <p class="ic-muted">Collection "{{ th }}" khali hai — Shopify admin mein products add karein.</p>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+
+  {%- comment -%} 09 — SOCIAL PROOF {%- endcomment -%}
+  <section class="ic-sec ic-sec--surface" aria-labelledby="ic-rev-h">
+    <div class="ic-wrap">
+      <div class="ic-head">
+        <div>
+          <p class="ic-eyebrow">Customer reviews</p>
+          <h2 class="ic-h2" id="ic-rev-h">Trusted by 12,000+ fighters</h2>
+          <p class="ic-sub">Independently collected reviews from verified orders across the EU.</p>
+        </div>
+      </div>
+      <div class="ic-reviews">
+        <div class="ic-card ic-score">
+          <b>4.8</b>
+          <span class="ic-stars" aria-hidden="true">★★★★★</span>
+          <p class="ic-muted" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em">Based on 3,412 reviews</p>
+        </div>
+        <ul>
+          {%- for r in review_rows -%}
+            {%- assign rp = r | split: '|' -%}
+            <li class="ic-card ic-quote">
+              <span class="ic-stars" aria-hidden="true">★★★★★</span>
+              <p style="margin-top:10px">{{ rp[0] }}</p>
+              <footer>{{ rp[1] }} — {{ rp[2] }}</footer>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <blockquote class="ic-card ic-pull">
+        <p>&ldquo;Our whole squad kits out here. Gear turns up before fight camp starts — every time.&rdquo;</p>
+        <footer>Coach D. Almeida — Head coach, Northside Boxing Gym</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  {%- comment -%} 10 — SIZE GUIDES {%- endcomment -%}
+  <section class="ic-sec" aria-labelledby="ic-guides-h">
+    <div class="ic-wrap">
+      <div class="ic-head">
+        <div>
+          <p class="ic-eyebrow">Size &amp; buying guides</p>
+          <h2 class="ic-h2" id="ic-guides-h">Get the fit right first time</h2>
+          <p class="ic-sub">Sizing is the number one reason gear gets returned. Two minutes here saves a swap.</p>
+        </div>
+      </div>
+      <ul class="ic-grid-4" style="display:grid;gap:16px">
+        {%- for g in guide_rows -%}
+          {%- assign gp = g | split: '|' -%}
+          <li>
+            <a class="ic-card ic-card--hover ic-tile" href="{{ gp[2] }}">
+              <h3>{{ gp[0] }}</h3>
+              <p>{{ gp[1] }}</p>
+              <span class="ic-more">Read guide &rarr;</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+  {%- comment -%} 11 — WHY BUY {%- endcomment -%}
+  <section class="ic-sec ic-sec--surface" aria-labelledby="ic-why-h">
+    <div class="ic-wrap">
+      <div class="ic-head">
+        <div>
+          <p class="ic-eyebrow">Why buy from us</p>
+          <h2 class="ic-h2" id="ic-why-h">No customs. No guesswork.</h2>
+          <p class="ic-sub">We stock combat sports gear in Europe so you get real delivery dates and real support.</p>
+        </div>
+      </div>
+      <ul class="ic-grid-4" style="display:grid;gap:16px">
+        {%- for w in why_rows -%}
+          {%- assign wp = w | split: '|' -%}
+          <li class="ic-card ic-why">
+            <i class="ic-dot" style="margin-top:8px" aria-hidden="true"></i>
+            <div>
+              <h3>{{ wp[0] }}</h3>
+              <p>{{ wp[1] }}</p>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+  {%- comment -%} 12 — BLOG TEASER {%- endcomment -%}
+  {%- assign ic_blog = blogs[blog_handle] -%}
+  {%- if ic_blog.articles_count > 0 -%}
+  <section class="ic-sec" aria-labelledby="ic-blog-h">
+    <div class="ic-wrap">
+      <div class="ic-head">
+        <div>
+          <p class="ic-eyebrow">Buying guides</p>
+          <h2 class="ic-h2" id="ic-blog-h">Train smarter, buy once</h2>
+        </div>
+        <a class="ic-btn ic-btn--text" href="{{ ic_blog.url }}">All articles</a>
+      </div>
+      <ul class="ic-posts" style="display:grid;gap:16px">
+        {%- for a in ic_blog.articles limit: 3 -%}
+          <li>
+            <a class="ic-card ic-card--hover ic-post" href="{{ a.url }}" style="display:block;height:100%">
+              <div class="ic-post__img">
+                {%- if a.image -%}
+                  <img src="{{ a.image | image_url: width: 900 }}" alt="{{ a.image.alt | default: a.title | escape }}" loading="lazy" width="900" height="506">
+                {%- else -%}
+                  <div class="ic-ph" aria-hidden="true"></div>
+                {%- endif -%}
+              </div>
+              <div class="ic-post__body">
+                <span class="ic-date">{{ a.published_at | date: '%d %b %Y' }}</span>
+                <h3>{{ a.title }}</h3>
+                <p>{{ a.excerpt_or_content | strip_html | truncate: 130 }}</p>
+              </div>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} 13 — NEWSLETTER {%- endcomment -%}
+  <section class="ic-sec ic-sec--surface" aria-labelledby="ic-news-h">
+    <div class="ic-wrap ic-news">
+      <p class="ic-eyebrow">Newsletter</p>
+      <h2 class="ic-h2" id="ic-news-h">Get 10% off your first order</h2>
+      <p class="ic-sub" style="margin:12px auto 0">Join our newsletter for new arrivals, exclusive offers and combat-sports buying guides.</p>
+      {%- form 'customer' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="ic-sr" for="ic-news-email">Email address</label>
+        <input id="ic-news-email" type="email" name="contact[email]" placeholder="you@example.com" required>
+        <button type="submit" class="ic-btn ic-btn--lg ic-btn--primary">Subscribe</button>
+        {%- if form.posted_successfully? -%}
+          <p class="ic-ok">Thanks — check your inbox for the discount.</p>
+        {%- endif -%}
+      {%- endform -%}
+      <p class="ic-note">One email a week. Unsubscribe any time.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function () {
+    // Colour swatches — image swap
+    document.querySelectorAll('.ic-pcard').forEach(function (card) {
+      var img = card.querySelector('[data-ic-img]');
+      card.querySelectorAll('[data-ic-swatch]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          card.querySelectorAll('[data-ic-swatch]').forEach(function (b) {
+            b.setAttribute('aria-checked', 'false');
+          });
+          btn.setAttribute('aria-checked', 'true');
+          var src = btn.getAttribute('data-img');
+          if (img && src) { img.src = src; }
+        });
+      });
+    });
+
+    // New / Sale tabs
+    document.querySelectorAll('[data-ic-tabs]').forEach(function (tabs) {
+      tabs.querySelectorAll('.ic-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.querySelectorAll('.ic-tab').forEach(function (t) {
+            t.setAttribute('aria-selected', 'false');
+            var p = document.getElementById(t.getAttribute('data-panel'));
+            if (p) { p.hidden = true; }
+          });
+          tab.setAttribute('aria-selected', 'true');
+          var panel = document.getElementById(tab.getAttribute('data-panel'));
+          if (panel) { panel.hidden = false; }
+        });
+      });
+    });
+  })();
+</script>
