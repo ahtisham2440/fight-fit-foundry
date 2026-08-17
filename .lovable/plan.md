@@ -1,56 +1,46 @@
-# Ironclad homepage as copy-paste Shopify code
+# Ironclad homepage — single Custom Liquid paste
 
-Goal: same look and UX as the current Ironclad Fight Co. homepage, but as Liquid/HTML you can paste straight into a Shopify theme — no React, no build step.
+Aap Shopify theme editor mein **Customize > Add section > Custom Liquid** mein jo code paste karte hain, wahi banega. Ek hi file, ek hi paste — koi theme code editing nahi, koi app nahi.
 
-## What you'll get
+## Kya milega
 
-A new folder in this project, `shopify/`, containing plain files you copy into your theme via **Online Store > Themes > Edit code**:
+Project mein ek nayi file: `shopify/ironclad-homepage.liquid`
 
-```text
-shopify/
-  sections/
-    ironclad-announcement.liquid
-    ironclad-hero.liquid
-    ironclad-trust-bar.liquid
-    ironclad-category-grid.liquid
-    ironclad-product-rail.liquid      (bestsellers / new / sale)
-    ironclad-campaign-banner.liquid
-    ironclad-brand-grid.liquid
-    ironclad-social-proof.liquid
-    ironclad-size-guides.liquid
-    ironclad-why-buy.liquid
-    ironclad-blog-teaser.liquid
-    ironclad-newsletter.liquid
-  assets/
-    ironclad.css                       (the whole design system: charcoal/black/yellow, Anton + Barlow, buttons, cards, product stage)
-  snippets/
-    ironclad-product-card.liquid       (neutral near-black stage, colour swatches, stars, price, add to cart)
-  INSTALL.md                           (step-by-step, in simple language)
-  ALL-IN-ONE.liquid                    (optional: entire homepage in one paste, for a single "Custom Liquid" block)
-```
+Us file mein sab kuch inline hoga:
+- Poora CSS (charcoal/black surfaces, ek yellow accent, Anton + Barlow fonts) — `<style>` block ke andar, scoped class prefix `ic-` taake aapke theme se clash na ho.
+- Poora homepage markup, current design ke mutabiq:
+  1. Announcement bar (free shipping / discount)
+  2. Hero (image + heading + 2 buttons)
+  3. Trust bar (4 icons)
+  4. Category grid (5 tiles, mobile par horizontal scroll)
+  5. Bestsellers product rail
+  6. Campaign banner
+  7. Brand grid
+  8. New + Sale (tabs)
+  9. Social proof / reviews
+  10. Size guides
+  11. Why buy from us
+  12. Blog teaser
+  13. Newsletter signup (Shopify customer form)
+- Chhota inline `<script>`: colour swatch image swap aur New/Sale tabs.
 
-## Design fidelity
+## Product data — asli catalog se
 
-- Exact same tokens: charcoal/black surfaces, one yellow accent, Anton display + Barlow body (loaded via `<link>` in the section, no @import).
-- Same components: announcement bar, sticky header search behaviour is left to your theme header; hero, trust bar, category tiles, product rails, campaign banner, brand grid, social proof, size guides, why-buy, blog teaser, newsletter, mobile horizontal scroll rails.
-- Product images keep their real colours: neutral near-black stage plus a very light ambient glow, exactly like the current React card.
-- Written in plain CSS (one stylesheet), so it works on Dawn and most themes without Tailwind.
+Rails Liquid loops use karengi:
+- `collections['bestsellers'].products`, `collections['new-arrivals']`, `collections['sale']` — collection handles file ke top par variables mein hongi, aap easily badal sakein.
+- Product card: featured image, vendor, title, price, compare-at price, availability, colour options as swatches.
+- Add to cart `/cart/add` form se — checkout seedha kaam karega.
+- Agar collection khali/na mile to demo placeholder cards dikhengi taake layout na toote.
 
-## Real store data
+## Text aur images
 
-The product card and rails pull from your actual Shopify catalog:
-- Rails read a collection chosen in the theme editor (`collection` setting), falling back to `all`.
-- Card uses `product.featured_image`, `product.title`, `product.vendor`, `product.price`, `product.compare_at_price`, availability, and colour options rendered as swatches.
-- Add to cart posts to `/cart/add` with the first available variant, so checkout works with no app.
-- Categories, brands, trust items, size guides, blog teaser and banner text are all theme-editor settings (schema), so you edit them in Shopify, not in code.
+Custom Liquid block mein schema settings nahi hoti, is liye:
+- Saara editable text (headings, trust items, brands, size guides, banner copy) file ke shuru mein saaf-suthre Liquid variables mein hoga, comments ke saath — aap wahin edit karein.
+- Images ke liye do options file mein comment karke diye jayenge: Shopify Files se URL paste karna (`https://cdn.shopify.com/...`), ya `{{ 'name.jpg' | asset_url }}` agar aap assets mein upload karein.
 
 ## Notes
 
-- Section files include a `{% schema %}` block, so after pasting they appear in **Customize > Add section**.
-- Images: category/brand/hero images are uploaded in the theme editor (Shopify CDN), so nothing is hardcoded to this project.
-- The React homepage in this project stays untouched — the Shopify files are additive.
-- `ALL-IN-ONE.liquid` is included as a fallback if you'd rather do a single paste instead of 12 section files.
-
-## Technical detail
-
-Liquid 5, no external JS frameworks. A small inline `<script>` per section handles the swatch image swap and tab switching (New / Sale), matching the current behaviour. All CSS lives in `assets/ironclad.css`, referenced with `{{ 'ironclad.css' | asset_url | stylesheet_tag }}`; the all-in-one file inlines it instead.
+- Fonts Google Fonts `<link>` se load honge; agar aap chahein to system fonts ka fallback bhi maujood hoga.
+- Mobile-first: rails horizontal scroll, tiles 2-column, buttons full width.
+- Is project ka React homepage waise ka waisa rahega — Liquid file sirf additive hai.
+- Ek `shopify/INSTALL.md` bhi banega: 5 step, aasan zubaan mein paste karne ka tareeqa.
