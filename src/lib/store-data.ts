@@ -101,8 +101,12 @@ export type Product = {
   rating: number;
   reviews: number;
   inStock: boolean;
+  /** Units left. When <= 5 the card shows the LOW STOCK state. STATIC DEMO DATA. */
+  stockLeft?: number;
   image: string;
   alt: string;
+  /** Editorial badge only: "Bestseller" | "New". Sale badges are derived from
+   *  `compareAt` by the card itself so every card behaves identically. */
   badge?: string;
   variants?: ProductVariant[];
 };
