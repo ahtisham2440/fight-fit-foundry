@@ -168,6 +168,7 @@ export const bestsellers: Product[] = [
     rating: 4.6,
     reviews: 94,
     inStock: true,
+    stockLeft: 3,
     image: headguard,
     alt: "Sting Orion sparring head guard",
   },
